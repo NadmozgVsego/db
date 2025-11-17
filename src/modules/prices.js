@@ -6,8 +6,12 @@ const prices = () => {
   const priceMin = document.querySelector('#min.filter-price_input')
   const priceMax = document.querySelector('#max.filter-price_input')
 
-  let valMin = 0
-  let valMax = 999999
+  let valMin = Number.NEGATIVE_INFINITY;
+  let valMax = Number.POSITIVE_INFINITY;
+
+
+  console.log(valMin + "-" + valMax);
+
 
   priceMax.addEventListener('input', (event) => {
     valMax = event.target.value

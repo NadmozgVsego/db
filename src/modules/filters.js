@@ -18,7 +18,8 @@ export const priceFilters = (goods, min, max) => {
 
 
   return goods.filter((goodsItem) => {
-    return goodsItem.price >= (min === 'undefined' ? 0 : min) && goodsItem.price <= (max === 'undefined' ? 999999 : max) //999999 = crutch
+    return goodsItem.price >= min && goodsItem.price <= max
   })
 }
 
+// return goodsItem.price >= (min === 'undefined' ? 0 : min) && goodsItem.price <= (max === 'undefined' ? 999999 : max)
