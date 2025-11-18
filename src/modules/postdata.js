@@ -1,13 +1,7 @@
-const postData = () => {
-  return fetch('https://learnjs-8db53-default-rtdb.firebaseio.com/goods.json', {
+const postData = (cart) => {
+  return fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
-    body: JSON.stringify({
-      title: "Вурдалак 4.5",
-      price: 9999,
-      sale: true,
-      img: "https://cdn1.ozone.ru/multimedia/c400/1023547851.jpg",
-      category: "Игры и софт"
-    }),
+    body: JSON.stringify({ cart }),
     /*headers: {
       'Content-Type:': 'application/json; charset=UTF-8',
     },*/
@@ -17,3 +11,6 @@ const postData = () => {
 }
 
 export default postData
+
+//https://learnjs-8db53-default-rtdb.firebaseio.com/goods.json
+// https://jsonplaceholder.typicode.com/posts

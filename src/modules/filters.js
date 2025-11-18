@@ -14,12 +14,23 @@ export const categoryFilters = (goods, value) => {
 
 export const priceFilters = (goods, min, max) => {
 
-  console.log(min + '-' + max);
+  console.log('from ' + min + ' to ' + max);
 
 
   return goods.filter((goodsItem) => {
-    return goodsItem.price >= min && goodsItem.price <= max
+    return goodsItem.price >= (min === '' ? Number.NEGATIVE_INFINITY : +min) && goodsItem.price <= (max === '' ? Number.POSITIVE_INFINITY : +max)
   })
 }
 
-// return goodsItem.price >= (min === 'undefined' ? 0 : min) && goodsItem.price <= (max === 'undefined' ? 999999 : max)
+export const hotsaleFilters = (goods, value) => {
+
+  return goods.filter((goodsItem) => {
+    if (value) {
+      return goodsItem.sale === true
+    } else {
+      return goodsItem
+    }
+
+  })
+}
+
