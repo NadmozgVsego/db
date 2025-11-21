@@ -3,14 +3,14 @@
 import { useCart } from "../providers/CartProvider"
 
 export default function Cart() {
-  const { cartItems, isOpen, setIsOpen, daleteCartItem } = useCart()
+  const { totalPrice, cartItems, isOpen, setIsOpen, daleteCartItem } = useCart()
 
   return (
     <>
       <div className="cart" style={{ display: isOpen ? 'flex' : 'none' }}>
         <div className="cart-body">
           <div className="cart-title">Корзина</div>
-          <div className="cart-total">Общая сумма: <span>0</span> руб</div>
+          <div className="cart-total">Общая сумма: <span>{totalPrice}</span> руб</div>
 
           <div className="cart-wrapper">
             {cartItems.map(product => (

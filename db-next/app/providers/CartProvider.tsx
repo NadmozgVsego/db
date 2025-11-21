@@ -21,6 +21,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   const [itemsCount, setItemsCount] = useState<number>(0)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
 
   const addCartItem = (product: Product) => {
     setCartItems((prev) => {
@@ -33,6 +34,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     })
 
     setItemsCount((prev) => { return prev + 1 })
+    setTotalPrice((prev) => { return prev + product.price })
   }
 
   const daleteCartItem = (product: Product) => {
@@ -50,10 +52,11 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     })
 
     setItemsCount((prev) => { return prev - 1 })
+    setTotalPrice((prev) => { return prev - product.price })
   }
 
   return (
-    <CartContext.Provider value={{ isOpen, itemsCount, cartItems, setIsOpen, addCartItem, daleteCartItem, setItemsCount }}>
+    <CartContext.Provider value={{ isOpen, itemsCount, totalPrice, cartItems, setIsOpen, addCartItem, daleteCartItem, setItemsCount, setTotalPrice }}>
       {children}
     </CartContext.Provider>
   )
